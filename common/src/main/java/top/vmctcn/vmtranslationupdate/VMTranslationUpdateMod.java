@@ -17,18 +17,17 @@ public class VMTranslationUpdateMod {
             String downloadUrl = DownloadUtil.getDownloadUrl();
 
             if (onlineVersion != null && !localVersion.equals(onlineVersion)) {
-                player.sendSystemMessage(Component.translatable("vmupdate.message.update", player.getDisplayName().getString(), localVersion, DownloadUtil.getOnlineVersion(player)), false);
+                player.sendSystemMessage(Component.translatable("vmtranslationupdate.message.update", player.getDisplayName().getString(), localVersion, DownloadUtil.getOnlineVersion(player)));
 
-                Component message = Component.translatable("vmupdate.message.update2")
-                        .append(Component.translatable(downloadUrl).withStyle(
-                                Style.EMPTY
-                                        .withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, downloadUrl))
-                                        .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Component.translatable("vmupdate.message.hover")))
-                                        .withColor(ChatFormatting.AQUA)
+                Component message = Component.translatable("vmtranslationupdate.message.update2")
+                        .append(Component.translatable(downloadUrl).withStyle(Style.EMPTY
+                                .withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, downloadUrl))
+                                .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Component.translatable("vmtranslationupdate.message.hover")))
+                                .withColor(ChatFormatting.AQUA)
                         ))
-                        .append(Component.translatable("vmupdate.message.update3"));
+                        .append(Component.translatable("vmtranslationupdate.message.update3"));
 
-                player.sendSystemMessage(message, false);
+                player.sendSystemMessage(message);
             }
         });
     }
