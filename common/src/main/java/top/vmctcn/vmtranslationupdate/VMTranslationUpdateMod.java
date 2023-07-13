@@ -3,7 +3,6 @@ package top.vmctcn.vmtranslationupdate;
 import dev.architectury.event.events.common.PlayerEvent;
 
 import net.minecraft.ChatFormatting;
-import net.minecraft.Util;
 import net.minecraft.network.chat.*;
 import top.vmctcn.vmtranslationupdate.util.ConfigUtil;
 import top.vmctcn.vmtranslationupdate.util.DownloadUtil;
@@ -18,18 +17,18 @@ public class VMTranslationUpdateMod {
             String downloadUrl = DownloadUtil.getDownloadUrl();
 
             if (onlineVersion != null && !localVersion.equals(onlineVersion)) {
-                player.sendMessage(new TranslatableComponent("vmupdate.message.update", player.getDisplayName().getString(), localVersion, DownloadUtil.getOnlineVersion(player)), Util.NIL_UUID);
+                player.sendSystemMessage(Component.translatable("vmupdate.message.update", player.getDisplayName().getString(), localVersion, DownloadUtil.getOnlineVersion(player)), false);
 
-                Component message = new TranslatableComponent("vmupdate.message.update2")
-                        .append(new TranslatableComponent(downloadUrl).withStyle(
+                Component message = Component.translatable("vmupdate.message.update2")
+                        .append(Component.translatable(downloadUrl).withStyle(
                                 Style.EMPTY
                                         .withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, downloadUrl))
-                                        .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslatableComponent("vmupdate.message.hover")))
+                                        .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Component.translatable("vmupdate.message.hover")))
                                         .withColor(ChatFormatting.AQUA)
                         ))
-                        .append(new TranslatableComponent("vmupdate.message.update3"));
+                        .append(Component.translatable("vmupdate.message.update3"));
 
-                player.sendMessage(message, Util.NIL_UUID);
+                player.sendSystemMessage(message, false);
             }
         });
     }
